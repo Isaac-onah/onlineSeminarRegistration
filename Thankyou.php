@@ -38,8 +38,7 @@ if (isset($_POST['submit'])){
       $message = "<a href='http://localhost/imoh/theevent-gh-pages/verify.php?vkey=$vkey'>Register Account</a> ";
       $headers = "From: iumeha@yahoo.com \r\n";
       $headers .="Content-type:text/html; charset=UTF-8" . "\r\n";
-      
-      mail($to,$subject,$message,$headers);
+mail($to, $subject,$message,$headers);
 
 
 header('location:Thankyou.php');
