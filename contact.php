@@ -1,5 +1,5 @@
 <?php
-$vkey = NULL;
+$error = NULL;
 
 if (isset($_POST['submit'])){
   //get form data
@@ -29,15 +29,6 @@ if (isset($_POST['submit'])){
 
     if($insert){
       $error = "sucessfully registered";
-      $to = $email;
-      $subject = "Email verification";
-      $message = "<a href='http://localhost/imoh/theevent-gh-pages/verify.php?vkey=$vkey'>Register Account</a> ";
-      $headers = "From: iumeha@yahoo.com \r\n";
-      $headers .="Content-type:text/html; charset=UTF-8" . "\r\n";
-
-      mail($to,$subject,$message,$headers);
-
-
     }else{
       $error = "Something went wrong try again";
     }
