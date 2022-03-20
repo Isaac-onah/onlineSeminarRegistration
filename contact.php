@@ -1,5 +1,4 @@
 <?php
-$error = NULL;
 $vkey = NULL;
 
 if (isset($_POST['submit'])){
@@ -26,10 +25,7 @@ if (isset($_POST['submit'])){
     $phone = $mysqli->real_escape_string($phone);
      $seminar = $mysqli->real_escape_string($seminar);
 
-    //generate VKey
-    $vkey = md5(time().$name);
-
-    $insert = $mysqli->query("INSERT INTO accounts(username, email, phone, seminar, vkey) VALUES('$name','$email','$phone','$seminar', '$vkey')");
+    $insert = $mysqli->query("INSERT INTO accounts(username, email, phone, seminar) VALUES('$name','$email','$phone','$seminar')");
 
     if($insert){
       $error = "sucessfully registered";
@@ -38,12 +34,8 @@ if (isset($_POST['submit'])){
       $message = "<a href='http://localhost/imoh/theevent-gh-pages/verify.php?vkey=$vkey'>Register Account</a> ";
       $headers = "From: iumeha@yahoo.com \r\n";
       $headers .="Content-type:text/html; charset=UTF-8" . "\r\n";
-      
+
       mail($to,$subject,$message,$headers);
-
-
-header('location:Thankyou.php');
-
 
 
     }else{
@@ -155,7 +147,6 @@ header('location:Thankyou.php');
         </div>
         <div class="container">
           <div class="section-header">
-            <h2><?php echo $vkey ?></h2>
             <h2><?php echo $error ?></h2>
           </div>
         </div>
