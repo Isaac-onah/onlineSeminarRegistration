@@ -1,34 +1,4 @@
-<?php
-$error = NULL;
-$vkey = NULL;
-if (isset($_POST['submit'])){
-  //get form data
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  if (strlen($name)<1){
-    $error = "Your username must be at least 5 characters";
-  }elseif(strlen($email<6)){
-      $error = "Type in a valid email address";
-  }elseif(strlen($phone<11)){
-      $error = "Your username must be at least 11 characters";
-  }else{
-    //form is valid
-    //connect to the database
-    $mysqli = NEW MySQLi('localhost', 'root', '', 'test');
 
-    //sanitised to strip any character that could be used for sql injection
-    $name = $mysqli->real_escape_string($name);
-    $email = $mysqli->real_escape_string($email);
-    $phone = $mysqli->real_escape_string($phone);
-
-    //generate VKey
-    $vkey = md5(time().$name);
-    echo $vkey;
-  }
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
